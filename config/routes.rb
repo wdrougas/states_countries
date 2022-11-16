@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   root 'countries#index'
 
+  get '/countries' => 'countries#index'
   get '/states' => 'states#index'
 
   post '/states' => 'states#create'

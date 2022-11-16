@@ -9,3 +9,11 @@
   Country: <%= f.select 'country_id', options_from_collection_for_select(@countries, "id", "name", "1")%>
   <%= f.submit %>
 <% end %>
+
+<br />
+<br />
+<br />
+<br />
+
+
+<%= button_to "Countries", countries_path, method: "get" %>
