@@ -1,0 +1,21 @@
+<h1>
+  Countries
+</h1>
+
+
+<%= select_tag 'country_id', options_from_collection_for_select(@countries, "id", "name", "1")%>
+
+
+<h2>
+  Create a new country
+</h2>
+
+
+<%= form_with model: Country.new do |f| %>
+  Name: <%= f.text_field :name %><br />
+  Code: <%= f.text_field :code %><br />
+  HerokuId: <%= f.number_field :heroku_id %><br />
+  <%= f.submit %>
+<% end %>
+
+
