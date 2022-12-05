@@ -10,6 +10,11 @@ class CountriesController < ApplicationController
     redirect_to action: 'index'
   end
 
+  def fetch_states
+    @country = Country.find(params[:country_id])
+    @states = @country.states
+  end
+
   private
 
   def country_params

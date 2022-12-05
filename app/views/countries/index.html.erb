@@ -1,30 +1,41 @@
-<h1>
-  Countries
-</h1>
+<%= turbo_frame_tag "countries-states" do %>
+  <h1>
+    Countries
+  </h1>
+
+  <%= form_with url: "/countries-states", method: :get do |form| %>
+    <%= form.select 'country_id', options_from_collection_for_select(@countries, "id", "name", "1") %>
+    <%= form.submit "Search" %>
+  <% end %>
+
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <% if @states%>
+  <%= select_tag 'state_id', options_from_collection_for_select(@states, "id", "name", "1"), onchange: "alert('Picked a state!');" %>
+  <% end %>
+
+  <h2>
+    Create a new country
+  </h2>
+
+  <%= form_with model: Country.new do |f| %>
+    Name: <%= f.text_field :name %><br />
+    <br />
+    Code: <%= f.text_field :code %><br />
+    <br />
+    HerokuId: <%= f.number_field :heroku_id %><br />
+    <br />
+    <%= f.submit %>
+  <% end %>
+
+  <br />
+  <br />
+  <br />
+  <br />
 
 
-<%= select_tag 'country_id', options_from_collection_for_select(@countries, "id", "name", "1")%>
-
-<br />
-<br />
-<br />
-<br />
-
-<h2>
-  Create a new country
-</h2>
-
-
-<%= form_with model: Country.new do |f| %>
-  Name: <%= f.text_field :name %><br />
-  Code: <%= f.text_field :code %><br />
-  HerokuId: <%= f.number_field :heroku_id %><br />
-  <%= f.submit %>
+  <%= link_to "States", states_path %>
 <% end %>
-
-<br />
-<br />
-<br />
-<br />
-
-<%= button_to "States", states_path, method: "get" %>
